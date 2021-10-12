@@ -1,15 +1,7 @@
-import Button from "./Components/Button";
+import Home from "./Pages/Home";
 
 function App() {
-  return (
-    <div>
-      <Button></Button>
-      <Button></Button>
-      <Button></Button>
-      <Button></Button>
-      <Button></Button>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
