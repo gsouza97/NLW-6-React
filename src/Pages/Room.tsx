@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import logoImg from "../Assets/images/logo.svg";
 import Button from "../Components/Button";
+import Question from "../Components/Question";
 import RoomCode from "../Components/RoomCode";
 import { useAuth } from "../Hooks/useAuth";
 import { database } from "../Services/firebase";
@@ -24,7 +25,7 @@ type RoomParams = {
   id: string;
 };
 
-type Question = {
+type QuestionType = {
   id: string;
   author: {
     name: string;
@@ -40,7 +41,7 @@ const Room = () => {
   const params = useParams<RoomParams>();
   const code = params.id;
   const [newQuestion, setNewQuestion] = useState("");
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -129,7 +130,17 @@ const Room = () => {
             </Button>
           </div>
         </form>
-        {/* {JSON.stringify(questions)} */}
+        <div className="question-list">
+          {questions.map((question) => {
+            return (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+              />
+            );
+          })}
+        </div>
       </main>
     </div>
   );
