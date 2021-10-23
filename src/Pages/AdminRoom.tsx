@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import logoImg from "../Assets/images/logo.svg";
-import deleImg from "../Assets/images/delete.svg";
+import deleteImg from "../Assets/images/delete.svg";
+import checkImg from "../Assets/images/check.svg";
+import answerImg from "../Assets/images/answer.svg";
 import Button from "../Components/Button";
 import Question from "../Components/Question";
 import RoomCode from "../Components/RoomCode";
@@ -35,6 +37,18 @@ const AdminRoom = () => {
     }
   }
 
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    await database.ref(`rooms/${code}/questions/${questionId}`).update({
+      isAnswered: true,
+    });
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`rooms/${code}/questions/${questionId}`).update({
+      isHighlighted: true,
+    });
+  }
+
   return (
     <div id="page-room">
       <header>
@@ -60,12 +74,26 @@ const AdminRoom = () => {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
+                <button
+                  type="button"
+                  onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                >
+                  <img src={checkImg} alt="Marcar pergunta como respondida" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleHighlightQuestion(question.id)}
+                >
+                  <img src={answerImg} alt="Dar destaque à pergunta" />
+                </button>
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  <img src={deleImg} alt="Remover pergunta" />
+                  <img src={deleteImg} alt="Remover pergunta" />
                 </button>
               </Question>
             );
