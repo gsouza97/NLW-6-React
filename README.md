@@ -32,6 +32,8 @@ $ yarn start
 
 Em seguida acessar http://localhost:3000 no navegador.
 
+Ou você também pode acessar diretamente através de https://letmeask-7eb2f.web.app
+
 # Improvements
 
 Ainda trabalhando...
