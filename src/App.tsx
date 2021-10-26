@@ -6,6 +6,7 @@ import NewRoom from "./Pages/NewRoom";
 import { AuthContextProvider } from "./Contexts/AuthContext";
 import Room from "./Pages/Room";
 import AdminRoom from "./Pages/AdminRoom";
+import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/rooms/new" exact component={NewRoom} />
-          <Route path="/rooms/:id" component={Room} />
-          <Route path="/admin/rooms/:id" component={AdminRoom} />
+          <Route path="/rooms/:id" exact component={Room} />
+          <Route path="/admin/rooms/:id" exact component={AdminRoom} />
+          <Route path="/*" component={PageNotFound} />
         </Switch>
       </AuthContextProvider>
     </BrowserRouter>

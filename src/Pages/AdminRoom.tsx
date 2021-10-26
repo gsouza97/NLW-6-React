@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import logoImg from "../Assets/images/logo.svg";
 import deleteImg from "../Assets/images/delete.svg";
 import checkImg from "../Assets/images/check.svg";
@@ -7,7 +6,6 @@ import answerImg from "../Assets/images/answer.svg";
 import Button from "../Components/Button";
 import Question from "../Components/Question";
 import RoomCode from "../Components/RoomCode";
-import { useAuth } from "../Hooks/useAuth";
 import { useRoom } from "../Hooks/useRoom";
 import "../Styles/room.scss";
 import { database } from "../Services/firebase";
@@ -17,7 +15,6 @@ type RoomParams = {
 };
 
 const AdminRoom = () => {
-  // const { user } = useAuth();
   const history = useHistory();
   const params = useParams<RoomParams>();
   const code = params.id;
@@ -53,7 +50,9 @@ const AdminRoom = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <Link to="/">
+            <img src={logoImg} alt="Letmeask" />
+          </Link>
           <div>
             <RoomCode code={code} />
             <Button isOutlined onClick={handleEndRoom}>

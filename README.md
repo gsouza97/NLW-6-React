@@ -36,7 +36,11 @@ Ou você também pode acessar diretamente através de https://letmeask-7eb2f.web
 
 # Improvements
 
-Ainda trabalhando...
+- Tema escuro
+- Não permitir like se o usuário não estiver logado
+- Voltar à home ao clicar na logo
+- Animação nos botões
+- Page not found
 
 # Layout
 
@@ -44,11 +48,17 @@ O layout do projeto está disponível no Figma e você pode visualizar pelo link
 
 - [Layout Letmeask Figma](https://www.figma.com/community/file/1009824839797878169)
 
+# Original x Improved
+
+<img src="Screenshots/1.jpg" width=370px/> 
+<img src="Screenshots/1 - dark.jpeg" width=370px/>
+
 # Media
 
 <div>
-<img src="Screenshots/1.jpg" width=370px/> 
-<img src="Screenshots/2.jpg" width=370px/>
-<img src="Screenshots/3.jpeg" width=370px/>
-<img src="Screenshots/4.jpeg" width=370px/>
+<img src="Screenshots/1 - dark.jpeg" width=370px/> 
+<img src="Screenshots/2 - dark.jpeg" width=370px/>
+<img src="Screenshots/3 - dark.jpeg" width=370px/>
+<img src="Screenshots/4 - dark.jpg" width=370px/>
+<img src="Screenshots/5 - dark.jpeg" width=370px/>
 </div>

@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import logoImg from "../Assets/images/logo.svg";
 import Button from "../Components/Button";
 import Question from "../Components/Question";
@@ -19,6 +19,7 @@ const Room = () => {
   const code = params.id;
   const [newQuestion, setNewQuestion] = useState("");
   const { questions, title } = useRoom(code);
+  const history = useHistory();
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -47,12 +48,15 @@ const Room = () => {
   }
 
   async function handleLikeQuestion(questionId: string, hasLiked: boolean) {
+    if (!user) {
+      return;
+    }
     if (!hasLiked) {
       await database.ref(`rooms/${code}/questions/${questionId}/likes`).push({
         authorId: user?.id,
       });
     } else {
-      //remover like
+      return;
     }
   }
 
@@ -60,7 +64,9 @@ const Room = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <Link to="/">
+            <img src={logoImg} alt="Letmeask" />
+          </Link>
           <RoomCode code={code} />
         </div>
       </header>
@@ -83,7 +89,10 @@ const Room = () => {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login.</button>
+                Para enviar uma pergunta,{" "}
+                <button onClick={() => history.push("/")}>
+                  faça seu login.
+                </button>
               </span>
             )}
             <Button type="submit" disabled={!user}>
