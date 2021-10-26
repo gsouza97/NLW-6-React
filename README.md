@@ -51,8 +51,8 @@ O layout do projeto está disponível no Figma e você pode visualizar pelo link
 # Original x Improved
 
 <div>
-<img src="Screenshots/1.jpg" width=400px/> 
-<img src="Screenshots/1 - dark.jpeg" width=415px/>
+<img src="Screenshots/1.jpg" width=385px/> 
+<img src="Screenshots/1 - dark.jpeg" width=400px/>
 </div>
 
 # Media
